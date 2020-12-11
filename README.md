@@ -1,6 +1,6 @@
 # VRU_code
  
-#Description
+# Description
 Problem and Solution
 - Death and injuries faced by traffic safety has made up a significant portion of health issues in the US. Every year, we have 20-50 million people suffering from non-fatal traffic injuries that often result in long-term disabilities. The traffic ecosystem currently fails to provide vulnerable road users(pedestrians, bike riders, etc.) as the current automatic braking systems are far from able to guarantee the prevention of collisions. In recent years, there has been this ongoing research in finding the most optimal method to alleviate traffic accidents. At Volvo, project City Safety is implemented to minimize the damage of the collisions. This mechanism is designed to be activated as late as possible to avoid unnecessary intervention. For vehicles, the brake is released automatically after the vehicle speeds up to 28 mph for pedestrians and 30 mph for cyclists. However, it has to perform to our expectations as activities include drivers turning the steering wheel sharply, driver releases pressed brake during AEB maneuver, VRU is encountered after corner turning, and VRU don’t wear reflective clothing in dark environments. In search of a better solution, we have decided on building and maintaining a simulation server for traffic safety to visualize our data, and alert drivers of approaching VRU before cameras and the human eye. To do so, we will perform our research in two approaches: traffic accident analysis, Geolocation API. Then include our findings into a dataset which observes VRU type, VRU coordinates. In Our buildup, we hope to deploy data science techniques in search of the best mechinis, to alleviate traffic accidents. 
 
@@ -14,25 +14,25 @@ In the future, we hope to thrive for a more practical use of our research and wo
 
 
 
-#Deployment, Running
-PART I：
+# Deployment, Running
+## PART I：
 
-converttosimdata.py
+## converttosimdata.py
 
 converttosimdata.py integrates VRUS from terminal input and CSV file and converts them into a JSON file. The current script parses the open data set: https://github.com/udacity/self-driving-car/tree/master/datasets
 
 Road user types in order: BIKE, PEDESTRIAN, CAR, TRUCK, SKATER
-Argument 0 --- converttosimdata.py
-Argument 1 --- CSV file that contains two columns "lat" and "long", both in float or integer.
-Argument 2 --- The name for the JSON file. Must contain ".json". Optional.
-Argument 3 --- Number of routes. Must be a positive integer.
-Argument 4 --- List of BIKE road users. If there are no bikers but other following road users, input a list of zeros. If there are no following road users, optional. The length of the list must be equal to the number of routes. Elements in the list must be positive integers.
-Argument 5 --- List of PEDESTRIAN road users. If there are no pedestrians but other following road users, input a list of zeros. If there are no pedestrians and no following road users, no input is needed.
-Argument 6 --- List of CAR road users.
-Argument 7 --- List of TRUCK road users.
-Argument 8 --- List of SKATER road users.
-Arguments are not noted optional are required.
-TO RUN
+*Argument 0 --- converttosimdata.py
+*Argument 1 --- CSV file that contains two columns "lat" and "long", both in float or integer.
+*Argument 2 --- The name for the JSON file. Must contain ".json". Optional.
+*Argument 3 --- Number of routes. Must be a positive integer.
+*Argument 4 --- List of BIKE road users. If there are no bikers but other following road users, input a list of zeros. If there are no following road users, optional. The length of the list must be equal to the number of routes. Elements in the list must be positive integers.
+*Argument 5 --- List of PEDESTRIAN road users. If there are no pedestrians but other following road users, input a list of zeros. If there are no pedestrians and no following road users, no input is needed.
+*Argument 6 --- List of CAR road users.
+*Argument 7 --- List of TRUCK road users.
+*Argument 8 --- List of SKATER road users.
+*Arguments are not noted optional are required.
+### TO RUN
 Download converttosimdata.py.
 From terminal, run for example:
 python converttosimdata.py gps.csv output1.json 2 [2,2] [3,3] [4,4] [5,5] [6,6]
@@ -41,9 +41,9 @@ python converttosimdata.py gps.csv output3.json 3 [0,0,0] [3,3,0] [0,0,0] [1,0,1
  
 It will create a JSON file like this format but with a much larger “gps” list. 
 
-PART II:
+## PART II:
 
-data_analysis.ipynb
+## data_analysis.ipynb
 
 You can run data_analysis.ipynb locally or on Google Colab. We used two datasets in this part: whether_car.csv, SC_Collisions.csv(Collisions in SC county), Population.xlsx(Population of each county in California), vechicle_2019.xlsx(Number of automobiles in each counties in California),  data.xlsx(reported traffic accidents from 2002-2010), and 2349981.csv. 
 
