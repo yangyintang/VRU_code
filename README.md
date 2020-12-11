@@ -35,9 +35,9 @@ Road user types in order: BIKE, PEDESTRIAN, CAR, TRUCK, SKATER
 ### TO RUN
 Download converttosimdata.py.
 From terminal, run for example:
-1.python converttosimdata.py gps.csv output1.json 2 [2,2] [3,3] [4,4] [5,5] [6,6]
-2.python converttosimdata.py gps.csv output2.json 2 [2,2] [0,0] [4,4]
-3.python converttosimdata.py gps.csv output3.json 3 [0,0,0] [3,3,0] [0,0,0] [1,0,1]
+python converttosimdata.py gps.csv output1.json 2 [2,2] [3,3] [4,4] [5,5] [6,6]
+python converttosimdata.py gps.csv output2.json 2 [2,2] [0,0] [4,4]
+python converttosimdata.py gps.csv output3.json 3 [0,0,0] [3,3,0] [0,0,0] [1,0,1]
  
 It will create a JSON file like this format but with a much larger “gps” list. 
 
