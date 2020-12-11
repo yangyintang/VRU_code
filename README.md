@@ -2,15 +2,16 @@
  
 # Description
 Problem and Solution
-- Death and injuries faced by traffic safety has made up a significant portion of health issues in the US. Every year, we have 20-50 million people suffering from non-fatal traffic injuries that often result in long-term disabilities. The traffic ecosystem currently fails to provide vulnerable road users(pedestrians, bike riders, etc.) as the current automatic braking systems are far from able to guarantee the prevention of collisions. In recent years, there has been this ongoing research in finding the most optimal method to alleviate traffic accidents. At Volvo, project City Safety is implemented to minimize the damage of the collisions. This mechanism is designed to be activated as late as possible to avoid unnecessary intervention. For vehicles, the brake is released automatically after the vehicle speeds up to 28 mph for pedestrians and 30 mph for cyclists. However, it has to perform to our expectations as activities include drivers turning the steering wheel sharply, driver releases pressed brake during AEB maneuver, VRU is encountered after corner turning, and VRU don’t wear reflective clothing in dark environments. In search of a better solution, we have decided on building and maintaining a simulation server for traffic safety to visualize our data, and alert drivers of approaching VRU before cameras and the human eye. To do so, we will perform our research in two approaches: traffic accident analysis, Geolocation API. Then include our findings into a dataset which observes VRU type, VRU coordinates. In Our buildup, we hope to deploy data science techniques in search of the best mechinis, to alleviate traffic accidents. 
+- Death and injuries faced by traffic safety have made up a significant portion of health issues in the US. Every year, we have 20-50 million people suffering from non-fatal traffic injuries that often result in long-term disabilities. The traffic ecosystem currently fails to provide vulnerable road users(pedestrians, bike riders, etc.) as the current automatic braking systems are far from able to guarantee the prevention of collisions. In recent years, there has been this ongoing research in finding the most optimal method to alleviate traffic accidents. At Volvo, project City Safety is implemented to minimize the damage of the collisions. This mechanism is designed to be activated as late as possible to avoid unnecessary intervention. For vehicles, the brake is released automatically after the vehicle speeds up to 28 mph for pedestrians and 30 mph for cyclists. However, it has to perform to our expectations as activities include drivers turning the steering wheel sharply, driver releases pressed brake during AEB maneuver, VRU is encountered after corner turning, and VRU don’t wear reflective clothing in dark environments. In search of a better solution, we have decided on building and maintaining a simulation server for traffic safety to visualize our data, and alert drivers of approaching VRU before cameras and the human eye. To do so, we will perform our research in two approaches: traffic accident analysis, Geolocation API. Then include our findings into a dataset that observes VRU type, VRU coordinates. In Our buildup, we hope to deploy data science techniques in search of the best machines, to alleviate traffic accidents. 
+ 
 
 - We have proposed a motion classifier where it is trained by acceleration data from an accelerator & gyroscope on smartphones. In our findings, aside from speed, other factors also play a crucial role in traffic accidents. We have looked into road condition, weather, types of accidents in conjuring a more complex explanation. 
 
-- First, we have developed a motion classifier with acceleration data. We trained our data with the KNN model and have achieved a testing accuracy of 0.946111. In addition, in terms of the traffic analysis portion, we inspected the situation with the following aspects. First, starting to see which kind of road conditions when an accident occurs, we have found out that road intersections have been a major location of traffic accidents. Thus, we would conclude that a classification of road conditions has different priorities when examining the risk of the VRU. Then we investigated the risk faced by different type of VRUs, the level of danger is described as follows: Vehicles > Cars/Pickup >  Bicycle users > Motorcycles > Bus > Trucks. In addition, to provide a better understanding of traffic understandings we also took speed and weather into consideration. We created a model where Predictor = Population / 10000000 * 0.02 + Total Average Temperature* 0.095 + RAINING * 0.34 + SNOWING * 0.50 + FOG * 0.20 + WIND * 0.16 to service as a better indicator for our alert system. 
+- First, we have developed a motion classifier with acceleration data. We trained our data with the KNN model and have achieved a testing accuracy of 0.946111. In addition, in terms of the traffic analysis portion, we inspected the situation with the following aspects. First, starting to see which kind of road conditions when an accident occurs, we have found out that road intersections have been a major location of traffic accidents. Thus, we would conclude that a classification of road conditions has different priorities when examining the risk of the VRU. Then we investigated the risk faced by a different type of VRUs, the level of danger is described as follows: Vehicles > Cars/Pickup >  Bicycle users > Motorcycles > Bus > Trucks. In addition, to provide a better understanding of traffic understandings we also took speed and weather into consideration. We created a model where Predictor = Population / 10000000 * 0.02 + Total Average Temperature* 0.095 + RAINING * 0.34 + SNOWING * 0.50 + FOG * 0.20 + WIND * 0.16 to service as a better indicator for our alert system. 
 
-As our project required a plethora of engineering works that required collaboration with hardware engineers, we built a simulator to reveal the specifics of our project. In our simulator, we have implemented our understanding of road users and have VRUs and vehicles interact. 
+As our project required a plethora of engineering works that required collaboration with hardware engineers, we built a simulator to reveal the specifics of our project. In our simulator, we have implemented our understanding of road users and have VRUs and vehicles interact.  
 
-In the future, we hope to thrive for a more practical use of our research and work with cross functioning teams to deliver a better product that protect more VRU.  
+In the future, we hope to thrive for more practical use of our research and work with cross-functioning teams to deliver a better product that protects more VRU.   
 
 
 
@@ -40,6 +41,27 @@ From terminal, run for example:
 3. python converttosimdata.py gps.csv output3.json 3 [0,0,0] [3,3,0] [0,0,0] [1,0,1]
  
 It will create a JSON file like this format but with a much larger “gps” list. 
+Example output
+```
+{
+  "vru-simulation-data":{
+    "name": "simdata-example",
+    "simdata": [
+      {
+        "routename": "pastoria avenue",
+        "gps": [{"lat": 37.386339,"long": -122.040848},{"lat":37.384997,"long":-122.034524}],
+        "vrus": [{"type":"BIKE","number":5},{"type":"PEDESTRIAN","number":5}]
+      },
+      {
+        "routename": "south pastoria avenue",
+        "gps": [{"lat": 37.386239,"long": -122.30848},{"lat":37.382997,"long":-122.03433524}],
+        "vrus": [{"type":"BIKE","number":2},{"type":"PEDESTRIAN","number":3}]
+      }
+    ]
+  }
+
+}
+```
 
 ## PART II:
 
@@ -50,7 +72,7 @@ You can run data_analysis.ipynb locally or on Google Colab. We used two datasets
 We did the following analysis: 
 - motion classifier
 1. main purpose is to analyze how accelerantion would help us to better understand traffic accidents
-2. trained the model wiht Logistics regression, KNN, Decision tree, Perceptron, XFBoost, Random Forest. 
+2. trained the model wiht Logistics regression, KNN, Decision tree, Perceptron, XGBoost, Random Forest. 
 3. KNN is our most optimal algorithm
 4. Conclusion: with accelerometer data, it classifies road user type with a KNN.
 
